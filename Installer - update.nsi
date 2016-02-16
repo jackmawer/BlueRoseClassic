@@ -18,7 +18,5 @@ Section "Main"
 	File "BlueRose\bin\Release\BlueRoseLauncher.pdb"
 	File "BlueRose\bin\Release\BlueRose.Distro.dll"
 	File "BlueRose\bin\Release\BlueRose.Distro.pdb"
-	File "BlueRose\bin\Release\Ionic.Zip.dll"
-	File "BlueRose\bin\Release\Ionic.Zip.xml"
 	
 SectionEnd

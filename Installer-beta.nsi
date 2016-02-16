@@ -18,8 +18,6 @@ Section "Main"
 	File "BlueRose\bin\Debug\BlueRoseLauncher.pdb"
 	File "BlueRose\bin\Debug\BlueRose.Distro.dll"
 	File "BlueRose\bin\Debug\BlueRose.Distro.pdb"
-	File "BlueRose\bin\Debug\Ionic.Zip.dll"
-	File "BlueRose\bin\Debug\Ionic.Zip.xml"
 	
 	 # create the uninstaller
     WriteUninstaller "$INSTDIR\Uninstall BlueRoseLauncher.exe"
@@ -43,8 +41,6 @@ Section "Uninstall"
 	Delete "$INSTDIR\BlueRoseLauncher.pdb"
 	Delete "$INSTDIR\BlueRose.Distro.dll"
 	Delete "$INSTDIR\BlueRose.Distro.pdb"
-	Delete "$INSTDIR\Ionic.Zip.dll"
-	Delete "$INSTDIR\Ionic.Zip.xml"
 	Delete "$INSTDIR\Uninstall BlueRoseLauncher.exe"
  
     # second, the shortcuts
