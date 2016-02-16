@@ -23,7 +23,7 @@ using System.IO.Compression;
 using System.Diagnostics;
 using BlueRose.Distro;
 
-namespace BlueRose
+namespace BlueRoseApp
 {
     public partial class BlueRoseGUI : Form
     {
@@ -32,8 +32,9 @@ namespace BlueRose
         string unpackerZip = "bluerose.zip";
         string netBuild = "#" + BlueRose.distNum();
         string buildFile = "fsobuild";
-
-        
+        string fsoConfigFile = Environment.CurrentDirectory + @"\FreeSO.exe.config";
+        string fsoConfigNormalBackup = Environment.CurrentDirectory + @"\FreeSO.exe.config.backup";
+        string fsoConfigUserBackup = Environment.CurrentDirectory + @"\FreeSO.exe.config.userbackup";
 
         public BlueRoseGUI()
         {
@@ -75,7 +76,20 @@ namespace BlueRose
             {
                 onlineBuildLabel.Text = "Offline";
             }
+
+            try
+            {
+                if (File.Exists(fsoConfigFile))
+                    File.Copy(fsoConfigFile, fsoConfigFile + ".backup", true);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
+
+        
 
         /// <summary>
         /// 
@@ -129,6 +143,12 @@ namespace BlueRose
             playBtn.Enabled = true;
 
             localBuild.Text = BlueRose.readBuild(buildFile);
+
+            if (File.Exists(fsoConfigFile))
+                File.Copy(fsoConfigFile, fsoConfigNormalBackup, true);
+
+            if (File.Exists(fsoConfigUserBackup))
+                File.Copy(fsoConfigUserBackup, fsoConfigFile, true);
 
             btnUpdate.Text = "Update FreeSO";
 
@@ -200,6 +220,12 @@ namespace BlueRose
             {
                 onlineBuildLabel.Text = "FAILED";
             }
+        }
+
+        private void configBtn_Click(object sender, EventArgs e)
+        {
+            ConfigGame configGUI = new ConfigGame();
+            configGUI.Show();   
         }
     }
 }

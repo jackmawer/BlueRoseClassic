@@ -20,7 +20,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BlueRose
+namespace BlueRoseApp
 {
     static class Program
     {

@@ -22,7 +22,7 @@ using System.Text.RegularExpressions;
 using System.IO.Compression;
 using System.Net;
 
-namespace BlueRose
+namespace BlueRoseApp
 {
     public class BlueRose
     {
