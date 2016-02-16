@@ -40,7 +40,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>BlueRose.Program</StartupObject>
+    <StartupObject>BlueRoseApp.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -65,11 +65,20 @@
     <Compile Include="BlueRoseGUI.Designer.cs">
       <DependentUpon>BlueRoseGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigGame.Designer.cs">
+      <DependentUpon>ConfigGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wildcard.cs" />
     <EmbeddedResource Include="BlueRoseGUI.resx">
       <DependentUpon>BlueRoseGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigGame.resx">
+      <DependentUpon>ConfigGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

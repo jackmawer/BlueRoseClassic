@@ -44,17 +44,19 @@ namespace BlueRoseApp
             try
             {
                 if (File.Exists(fsoConfigFile))
+                {
                     File.Copy(fsoConfigFile, fsoConfigNormalBackup, true);
 
-                string[] lines = File.ReadAllLines(fsoConfigFile);
-                lines[71] = "                <value>" + width + "</value>";
-                lines[74] = "                <value>" + height + "</value>";
-                File.WriteAllLines(fsoConfigFile, lines);
+                    string[] lines = File.ReadAllLines(fsoConfigFile);
+                    lines[71] = "                <value>" + width + "</value>";
+                    lines[74] = "                <value>" + height + "</value>";
+                    File.WriteAllLines(fsoConfigFile, lines);
 
-                if (File.Exists(fsoConfigFile))
-                    File.Copy(fsoConfigFile, fsoConfigUserBackup, true);
+                    if (File.Exists(fsoConfigFile))
+                        File.Copy(fsoConfigFile, fsoConfigUserBackup, true);
 
-                configStatus.Text = settingsSavedMsg;
+                    configStatus.Text = settingsSavedMsg;
+                }
             }
             catch
             {
