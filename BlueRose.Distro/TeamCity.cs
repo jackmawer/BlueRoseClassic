@@ -15,7 +15,7 @@
 //  FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
 //  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-using Ionic.Zip;
+using System.IO.Compression;
 using System;
 using System.IO;
 using System.Net;
@@ -42,13 +42,14 @@ namespace BlueRose.Distro
 
                 client.DownloadFileAsync(tcAddress(address, buildType), distFile);
 
-                using (ZipFile buildUnpack = ZipFile.Read(distFile))
+                using (ZipArchive buildUnpack = ZipFile.OpenRead(distFile))
                 {
-                    foreach (ZipEntry ex in buildUnpack)
+                    foreach (ZipArchiveEntry ex in buildUnpack.Entries)
                     {
-                        ex.Extract(Environment.CurrentDirectory, ExtractExistingFileAction.OverwriteSilently);
+                        ex.ExtractToFile(Path.Combine(Environment.CurrentDirectory, ex.FullName), true);
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -62,11 +63,11 @@ namespace BlueRose.Distro
         /// <param name="distFile"></param>
         public static void tcUnpack(string distFile = "teamcity.zip")
         {
-            using (ZipFile buildUnpack = ZipFile.Read(distFile))
+            using (ZipArchive buildUnpack = ZipFile.OpenRead(distFile))
             {
-                foreach (ZipEntry ex in buildUnpack)
+                foreach (ZipArchiveEntry ex in buildUnpack.Entries)
                 {
-                    ex.Extract(Environment.CurrentDirectory, ExtractExistingFileAction.OverwriteSilently);
+                    ex.ExtractToFile(Path.Combine(Environment.CurrentDirectory, ex.FullName), true);
                 }
             }
         }

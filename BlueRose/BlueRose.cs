@@ -16,10 +16,10 @@
 
 using System;
 using System.Diagnostics;
-using SysIO = System.IO;
+using System.IO;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using Ionic.Zip;
+using System.IO.Compression;
 using System.Net;
 
 namespace BlueRose
@@ -98,9 +98,9 @@ namespace BlueRose
             string url = "http://servo.freeso.org/externalStatus.html?js=1";
             WebRequest wrGETURL;
             wrGETURL = WebRequest.Create(url);
-            SysIO.Stream objStream;
+            Stream objStream;
             objStream = wrGETURL.GetResponse().GetResponseStream();
-            SysIO.StreamReader objReader = new SysIO.StreamReader(objStream);
+            StreamReader objReader = new StreamReader(objStream);
             string sLine = "";
             string fll;
             fll = objReader.ReadLine();
@@ -121,7 +121,7 @@ namespace BlueRose
             try
             {
                 string buildFile = Environment.CurrentDirectory + @"/" + file;
-                SysIO.StreamReader fileRead = new SysIO.StreamReader(buildFile);
+                StreamReader fileRead = new StreamReader(buildFile);
                 while ((line = fileRead.ReadLine()) != null)
                 {
                     return "#" + line;
@@ -148,7 +148,7 @@ namespace BlueRose
 
             try
             {
-                SysIO.File.WriteAllText(buildFile, localDist);
+                File.WriteAllText(buildFile, localDist);
             }
             catch (Exception ex)
             {
@@ -161,27 +161,25 @@ namespace BlueRose
         /// </summary>
         public static void GC()
         {
-            string htmlOutput = "downloadArtifacts.html";
+            string htmlOutput = "downloadArtifacts.html"; // Legacy
             string brLegacyInstaller = "BlueRoseStable.exe";
             string brUpdateInstaller = "BlueRoseUpdate.exe";
 
-            if (SysIO.File.Exists(brLegacyInstaller))
-                SysIO.File.Delete(brLegacyInstaller);
-
-            if (SysIO.File.Exists(brUpdateInstaller))
-                SysIO.File.Delete(brUpdateInstaller);
-
-            if (SysIO.File.Exists(htmlOutput))
-                SysIO.File.Delete(htmlOutput);
+            if (File.Exists(brLegacyInstaller) || File.Exists(brUpdateInstaller) || File.Exists(htmlOutput))
+            {
+                File.Delete(brLegacyInstaller);
+                File.Delete(brUpdateInstaller);
+                File.Delete(htmlOutput);
+            }
 
             Wildcard wildZip = new Wildcard("*.zip", RegexOptions.IgnoreCase);
-            string[] files = SysIO.Directory.GetFiles(Environment.CurrentDirectory);
+            string[] files = Directory.GetFiles(Environment.CurrentDirectory);
 
             foreach(string file in files)
             {
                 if (wildZip.IsMatch(file))
                 {
-                    SysIO.File.Delete(file);
+                    File.Delete(file);
                 }
             }
         }
@@ -194,17 +192,17 @@ namespace BlueRose
             Wildcard unpacker = new Wildcard("*.zip", RegexOptions.IgnoreCase);
 
             // Get a list of files in the My Documents folder
-            string[] files = SysIO.Directory.GetFiles(Environment.CurrentDirectory);
+            string[] files = Directory.GetFiles(Environment.CurrentDirectory);
 
             foreach (string file in files)
             {
                 if (unpacker.IsMatch(file))
                 {
-                    using (ZipFile zip2 = ZipFile.Read(file))
+                    using (ZipArchive zip2 = ZipFile.OpenRead(file))
                     {
-                        foreach (ZipEntry ex in zip2)
+                        foreach (ZipArchiveEntry ex in zip2.Entries)
                         {
-                            ex.Extract(Environment.CurrentDirectory, ExtractExistingFileAction.OverwriteSilently);
+                            ex.ExtractToFile(Path.Combine(Environment.CurrentDirectory, ex.FullName), true);
                         }
                     }
                 }

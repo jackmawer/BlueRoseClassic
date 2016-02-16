@@ -18,7 +18,8 @@ using System;
 using System.ComponentModel;
 using System.Net;
 using System.Windows.Forms;
-using Ionic.Zip;
+using System.IO;
+using System.IO.Compression;
 using System.Diagnostics;
 using BlueRose.Distro;
 
@@ -28,7 +29,7 @@ namespace BlueRose
     {
         private string errorBtn = "ERROR";
         WebClient client = new WebClient();
-        string blueRoseFile = "bluerose.zip";
+        string unpackerZip = "bluerose.zip";
         string netBuild = "#" + BlueRose.distNum();
         string buildFile = "fsobuild";
 
@@ -147,32 +148,28 @@ namespace BlueRose
             client.DownloadFileCompleted += new AsyncCompletedEventHandler(brDownloadCompleted);
 
             client.DownloadFileAsync(BlueRose.webURL(@"https://dl.dropboxusercontent.com/u/42345729/BlueRoseUpdate.zip"),
-                blueRoseFile);
+                unpackerZip);
         }
 
         void brDownloadCompleted(object sender, AsyncCompletedEventArgs e)
         {
             btnUpdateLauncher.Text = "Unpacking";
 
-            string firstUnpack = blueRoseFile;
-            string secondUnpack = "BlueRoseUpdate.zip";
+            string unpack = unpackerZip;
 
-            using (ZipFile buildUnpack = ZipFile.Read(firstUnpack))
+            try
             {
-                foreach (ZipEntry ex in buildUnpack)
+                using (ZipArchive buildUnpack = ZipFile.OpenRead(unpack))
                 {
-                    ex.Extract(Environment.CurrentDirectory, ExtractExistingFileAction.OverwriteSilently);
+                    foreach (ZipArchiveEntry ex in buildUnpack.Entries)
+                    {
+                        ex.ExtractToFile(Path.Combine(Environment.CurrentDirectory, ex.FullName), true);
+                    }
                 }
             }
-
-            btnUpdateLauncher.Text = "Installing";
-
-            using (ZipFile instUnpack = new ZipFile(secondUnpack))
+            catch (Exception ex)
             {
-                foreach (ZipEntry ex in instUnpack)
-                {
-                    ex.Extract(Environment.CurrentDirectory, ExtractExistingFileAction.OverwriteSilently);
-                }
+                MessageBox.Show(ex.Message);
             }
 
             Process.Start("BlueRoseUpdate.exe");
