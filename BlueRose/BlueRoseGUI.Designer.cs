@@ -38,7 +38,6 @@
             this.latestBuild = new System.Windows.Forms.Label();
             this.onlineBuildLabel = new System.Windows.Forms.Label();
             this.fsoLogo = new System.Windows.Forms.PictureBox();
-            this.configBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fsoLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +73,7 @@
             // 
             // btnUpdateLauncher
             // 
-            this.btnUpdateLauncher.Location = new System.Drawing.Point(7, 198);
+            this.btnUpdateLauncher.Location = new System.Drawing.Point(9, 169);
             this.btnUpdateLauncher.Name = "btnUpdateLauncher";
             this.btnUpdateLauncher.Size = new System.Drawing.Size(116, 23);
             this.btnUpdateLauncher.TabIndex = 10;
@@ -90,7 +89,6 @@
             this.localBuild.Size = new System.Drawing.Size(35, 13);
             this.localBuild.TabIndex = 11;
             this.localBuild.Text = "label1";
-            this.localBuild.Click += new System.EventHandler(this.localBuild_Click);
             // 
             // versionIS
             // 
@@ -100,7 +98,6 @@
             this.versionIS.Size = new System.Drawing.Size(74, 13);
             this.versionIS.TabIndex = 12;
             this.versionIS.Text = "Installed build:";
-            this.versionIS.Click += new System.EventHandler(this.versionIS_Click);
             // 
             // latestBuild
             // 
@@ -130,17 +127,6 @@
             this.fsoLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fsoLogo.TabIndex = 18;
             this.fsoLogo.TabStop = false;
-            this.fsoLogo.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // configBtn
-            // 
-            this.configBtn.Location = new System.Drawing.Point(7, 169);
-            this.configBtn.Name = "configBtn";
-            this.configBtn.Size = new System.Drawing.Size(117, 23);
-            this.configBtn.TabIndex = 20;
-            this.configBtn.Text = "Configure";
-            this.configBtn.UseVisualStyleBackColor = true;
-            this.configBtn.Click += new System.EventHandler(this.configBtn_Click);
             // 
             // BlueRoseGUI
             // 
@@ -148,8 +134,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(131, 232);
-            this.Controls.Add(this.configBtn);
+            this.ClientSize = new System.Drawing.Size(131, 200);
             this.Controls.Add(this.fsoLogo);
             this.Controls.Add(this.onlineBuildLabel);
             this.Controls.Add(this.latestBuild);
@@ -184,7 +169,6 @@
         private System.Windows.Forms.Label latestBuild;
         private System.Windows.Forms.Label onlineBuildLabel;
         private System.Windows.Forms.PictureBox fsoLogo;
-        private System.Windows.Forms.Button configBtn;
     }
 }
 

@@ -191,21 +191,28 @@ namespace BlueRoseApp
         {
             Wildcard unpacker = new Wildcard("*.zip", RegexOptions.IgnoreCase);
 
-            // Get a list of files in the My Documents folder
+            // Get a list of files in the current directory
             string[] files = Directory.GetFiles(Environment.CurrentDirectory);
 
-            foreach (string file in files)
+            try
             {
-                if (unpacker.IsMatch(file))
+                foreach (string file in files)
                 {
-                    using (ZipArchive zip2 = ZipFile.OpenRead(file))
+                    if (unpacker.IsMatch(file))
                     {
-                        foreach (ZipArchiveEntry ex in zip2.Entries)
+                        using (ZipArchive zip2 = ZipFile.OpenRead(file))
                         {
-                            ex.ExtractToFile(Path.Combine(Environment.CurrentDirectory, ex.FullName), true);
+                            foreach (ZipArchiveEntry ex in zip2.Entries)
+                            {
+                                ex.ExtractToFile(Path.Combine(Environment.CurrentDirectory, ex.FullName), true);
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

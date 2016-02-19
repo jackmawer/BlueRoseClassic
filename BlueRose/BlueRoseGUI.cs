@@ -134,6 +134,8 @@ namespace BlueRoseApp
 
             TeamCity.tcUnpack();
 
+            File.Delete(Environment.CurrentDirectory + "teamcity.zip");
+
             BlueRose.wildUnZip();
 
             BlueRose.writeBuild(buildFile);
@@ -196,20 +198,6 @@ namespace BlueRoseApp
             Environment.Exit(0);
         }
 
-        private void versionIS_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void localBuild_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void onlineBuildLabel_Click(object sender, EventArgs e)
         {
             try
@@ -220,12 +208,6 @@ namespace BlueRoseApp
             {
                 onlineBuildLabel.Text = "FAILED";
             }
-        }
-
-        private void configBtn_Click(object sender, EventArgs e)
-        {
-            ConfigGame configGUI = new ConfigGame();
-            configGUI.Show();   
         }
     }
 }
