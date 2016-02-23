@@ -1,6 +1,6 @@
-Name "Blue Rose 2.0 Stable"
+Name "Blue Rose"
 
-Outfile "BlueRoseStable.exe"
+Outfile "BlueRoseOffline.exe"
 
 RequestExecutionLevel admin
 
