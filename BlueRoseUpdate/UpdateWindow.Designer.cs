@@ -63,7 +63,7 @@
             this.MaximizeBox = false;
             this.Name = "UpdateWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Simply Update";
+            this.Text = "Blue Rose Update";
             this.Load += new System.EventHandler(this.UpdateWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,7 +28,7 @@ Section "Main"
 	CreateShortCut "$SMPROGRAMS\FreeSO\Uninstall Blue Rose.lnk" "$INSTDIR\Uninstall BlueRoseLauncher.exe"
 
 	# create desktop shortcut
-  	CreateShortCut "$DESKTOP\Viewer Launcher.lnk" "$INSTDIR\SimplyUpdate.exe"
+  	CreateShortCut "$DESKTOP\FreeSO.lnk" "$INSTDIR\SimplyUpdate.exe"
 	
 SectionEnd
 
