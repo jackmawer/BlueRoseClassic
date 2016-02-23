@@ -1,0 +1,3 @@
+[submodule "ZACKUpdater"]
+	path = ZACKUpdater
+	url = https://github.com/ZackCasey/ZACKUpdater.git

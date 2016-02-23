@@ -32,12 +32,12 @@
             this.playBtn = new System.Windows.Forms.Button();
             this.devBtn = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnUpdateLauncher = new System.Windows.Forms.Button();
             this.localBuild = new System.Windows.Forms.Label();
             this.versionIS = new System.Windows.Forms.Label();
             this.latestBuild = new System.Windows.Forms.Label();
             this.onlineBuildLabel = new System.Windows.Forms.Label();
             this.fsoLogo = new System.Windows.Forms.PictureBox();
+            this.btnUpdateLauncher = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fsoLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,16 +70,6 @@
             this.btnUpdate.Text = "Update FreeSO";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnUpdateLauncher
-            // 
-            this.btnUpdateLauncher.Location = new System.Drawing.Point(9, 169);
-            this.btnUpdateLauncher.Name = "btnUpdateLauncher";
-            this.btnUpdateLauncher.Size = new System.Drawing.Size(116, 23);
-            this.btnUpdateLauncher.TabIndex = 10;
-            this.btnUpdateLauncher.Text = "Update Launcher";
-            this.btnUpdateLauncher.UseVisualStyleBackColor = true;
-            this.btnUpdateLauncher.Click += new System.EventHandler(this.btnUpdateLauncher_Click);
             // 
             // localBuild
             // 
@@ -128,6 +118,16 @@
             this.fsoLogo.TabIndex = 18;
             this.fsoLogo.TabStop = false;
             // 
+            // btnUpdateLauncher
+            // 
+            this.btnUpdateLauncher.Location = new System.Drawing.Point(9, 169);
+            this.btnUpdateLauncher.Name = "btnUpdateLauncher";
+            this.btnUpdateLauncher.Size = new System.Drawing.Size(116, 23);
+            this.btnUpdateLauncher.TabIndex = 10;
+            this.btnUpdateLauncher.Text = "Update Launcher";
+            this.btnUpdateLauncher.UseVisualStyleBackColor = true;
+            this.btnUpdateLauncher.Click += new System.EventHandler(this.btnUpdateLauncher_Click);
+            // 
             // BlueRoseGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,12 +163,12 @@
         private System.Windows.Forms.Button playBtn;
         private System.Windows.Forms.Button devBtn;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnUpdateLauncher;
         private System.Windows.Forms.Label localBuild;
         private System.Windows.Forms.Label versionIS;
         private System.Windows.Forms.Label latestBuild;
         private System.Windows.Forms.Label onlineBuildLabel;
         private System.Windows.Forms.PictureBox fsoLogo;
+        private System.Windows.Forms.Button btnUpdateLauncher;
     }
 }
 

@@ -1,4 +1,4 @@
-Name "Blue Rose 2.0 Beta"
+Name "Blue Rose Beta"
 
 Outfile "BlueRoseBeta.exe"
 
@@ -18,6 +18,11 @@ Section "Main"
 	File "BlueRose\bin\Debug\BlueRoseLauncher.pdb"
 	File "BlueRose\bin\Debug\BlueRose.Distro.dll"
 	File "BlueRose\bin\Debug\BlueRose.Distro.pdb"
+	File "BlueRoseUpdate\bin\Debug\SimplyUpdate.exe"
+	File "BlueRoseUpdate\bin\Debug\SimplyUpdate.exe.config"
+	File "BlueRoseUpdate\bin\Debug\SimplyUpdate.pdb"
+	File "BlueRoseUpdate\bin\Debug\ZACKUpdater.dll"
+	File "BlueRoseUpdate\bin\Debug\ZACKUpdater.pdb"
 	
 	 # create the uninstaller
     WriteUninstaller "$INSTDIR\Uninstall BlueRoseLauncher.exe"
@@ -39,9 +44,8 @@ Section "Uninstall"
 	Delete "$INSTDIR\BlueRoseLauncher.exe"
 	Delete "$INSTDIR\BlueRoseLauncher.exe.config"
 	Delete "$INSTDIR\BlueRoseLauncher.pdb"
-	Delete "$INSTDIR\BlueRose.Distro.dll"
-	Delete "$INSTDIR\BlueRose.Distro.pdb"
 	Delete "$INSTDIR\Uninstall BlueRoseLauncher.exe"
+	
  
     # second, the shortcuts
     Delete "$DESKTOP\FreeSO.lnk"

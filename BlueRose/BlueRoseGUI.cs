@@ -23,6 +23,7 @@ using System.IO.Compression;
 using System.Diagnostics;
 using BlueRose.Distro;
 
+
 namespace BlueRoseApp
 {
     public partial class BlueRoseGUI : Form
@@ -89,8 +90,6 @@ namespace BlueRoseApp
 
         }
 
-        
-
         /// <summary>
         /// 
         /// </summary>
@@ -102,7 +101,7 @@ namespace BlueRoseApp
             try
             {
                 BlueRose.GC();
-                
+
                 client.DownloadFileCompleted += new AsyncCompletedEventHandler(freeSODownloadCompleted);
 
                 client.DownloadFileAsync(TeamCity.tcAddress("servo.freeso.org", "ProjectDollhouse_TsoClient"), "teamcity.zip");
@@ -123,8 +122,8 @@ namespace BlueRoseApp
                 btnUpdate.Text = errorBtn;
                 btnUpdate.Enabled = false;
             }
-            
-            
+
+
         }
 
         void freeSODownloadCompleted(object sender, AsyncCompletedEventArgs e)
@@ -161,43 +160,6 @@ namespace BlueRoseApp
             
         }
 
-        private void btnUpdateLauncher_Click(object sender, EventArgs e)
-        {
-            btnUpdateLauncher.Enabled = false;
-
-            WebClient client = new WebClient();
-
-            client.DownloadFileCompleted += new AsyncCompletedEventHandler(brDownloadCompleted);
-
-            client.DownloadFileAsync(BlueRose.webURL(@"https://dl.dropboxusercontent.com/u/42345729/BlueRoseUpdate.zip"),
-                unpackerZip);
-        }
-
-        void brDownloadCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            btnUpdateLauncher.Text = "Unpacking";
-
-            string unpack = unpackerZip;
-
-            try
-            {
-                using (ZipArchive buildUnpack = ZipFile.OpenRead(unpack))
-                {
-                    foreach (ZipArchiveEntry ex in buildUnpack.Entries)
-                    {
-                        ex.ExtractToFile(Path.Combine(Environment.CurrentDirectory, ex.FullName), true);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            Process.Start("BlueRoseUpdate.exe");
-            Environment.Exit(0);
-        }
-
         private void onlineBuildLabel_Click(object sender, EventArgs e)
         {
             try
@@ -207,6 +169,29 @@ namespace BlueRoseApp
             catch
             {
                 onlineBuildLabel.Text = "FAILED";
+            }
+        }
+
+        private void btnUpdateLauncher_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process simsPackUpdate = new Process();
+                simsPackUpdate.StartInfo.FileName = "SimplyUpdate.exe";
+                simsPackUpdate.StartInfo.Verb = "runas";
+                simsPackUpdate.Start();
+                try
+                {
+                    Application.Exit();
+                }
+                catch
+                {
+                    Environment.Exit(0);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Updater not found!", "WARNING");
             }
         }
     }

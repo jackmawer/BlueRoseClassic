@@ -29,6 +29,11 @@ namespace BlueRoseApp
 
         public static string[] fsoParmas { get; set; }
 
+        public static Uri teamCityUri(string address, string buildType)
+        {
+            return new Uri(@"http://" + address + "/guestAuth/downloadArtifacts.html?buildTypeId=" + buildType + "&buildId=lastSuccessful");
+        }
+
         /// <summary>
         /// Returns a given URL. If it isn't there,
         /// defualt to Google.

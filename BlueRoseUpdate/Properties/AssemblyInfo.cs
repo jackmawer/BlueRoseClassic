@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BlueRose.TeamCity")]
+[assembly: AssemblyTitle("ZACKUpdater")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BlueRose.TeamCity")]
+[assembly: AssemblyProduct("ZACKUpdater")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5c2ba9fe-c9fd-4243-b906-8e08f8d8aae5")]
+[assembly: Guid("798f1669-354f-4ed1-aee4-05c82314f00e")]
 
 // Version information for an assembly consists of the following four values:
 //
