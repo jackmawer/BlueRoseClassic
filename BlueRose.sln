@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueRose", "BlueRose\BlueRose.csproj", "{DC049B5A-733A-4137-AE58-2495517ECA2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZACKUpdater", "ZACKUpdater\ZACKUpdater\ZACKUpdater.csproj", "{EF5CA42A-7D99-4F47-B6F1-7BD4532150D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibZack", "LibZack\LibZack\LibZack.csproj", "{EF5CA42A-7D99-4F47-B6F1-7BD4532150D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueRoseUpdate", "BlueRoseUpdate\BlueRoseUpdate.csproj", "{798F1669-354F-4ED1-AEE4-05C82314F00E}"
 EndProject

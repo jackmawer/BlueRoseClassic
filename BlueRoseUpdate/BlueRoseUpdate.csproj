@@ -91,9 +91,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZACKUpdater\ZACKUpdater\ZACKUpdater.csproj">
+    <ProjectReference Include="..\LibZack\LibZack\LibZack.csproj">
       <Project>{ef5ca42a-7d99-4f47-b6f1-7bd4532150d2}</Project>
-      <Name>ZACKUpdater</Name>
+      <Name>LibZack</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
